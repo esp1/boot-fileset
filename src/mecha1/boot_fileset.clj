@@ -1,7 +1,8 @@
 (ns mecha1.boot-fileset
   (:require [boot.core :as boot]
             [boot.util :as util]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (boot/deftask gen-fs
   "Add generated files to the fileset. The generator functions should return one or more file specs.
@@ -19,6 +20,7 @@
                          :source source-dir
                          :resource resource-dir
                          :asset asset-dir)
+                path (str/replace path #"^/" "")            ; strip leading /
                 f (io/file fs-dir path)]
             (.mkdirs (io/file (.getParent f)))
             (spit f content)))
