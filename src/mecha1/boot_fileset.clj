@@ -3,7 +3,7 @@
             [boot.util :as util]
             [clojure.java.io :as io]))
 
-(boot/deftask gen->fs
+(boot/deftask gen-fs
   "Add generated files to the fileset. The generator functions should return one or more file specs.
   Each file spec is a map with keys :path, :fs, and :content, where path is a path string relative to the fileset root,
   fs is one of :source, :resource, or :asset indicating which component of the fileset the file should be associated with,
